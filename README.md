@@ -1,66 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!DOCTYPE html>
+<html lang="en">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Name</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+        }
 
-## About Laravel
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+        section {
+            margin-bottom: 20px;
+        }
 
-## Learning Laravel
+        .warning {
+            color: #ff5733;
+        }
+    </style>
+</head>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<body>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    <h1>Project Name</h1>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    <section>
+        <h2>Description</h2>
+        <p>This project focuses on managing clients and services through a database. It uses three main tables: <code>clients</code>, <code>services</code>, and <code>clients_services</code>. The first two tables, <code>clients</code> and <code>services</code>, feed the corresponding models of clients and services, while the third table, <code>clients_services</code>, acts as a pivot table to establish many-to-many relationships between the <code>clients</code> and <code>services</code> tables.</p>
+    </section>
 
-## Laravel Sponsors
+    <section>
+        <h2>Project Structure</h2>
+        <ul>
+            <li><strong>models/</strong>
+                <ul>
+                    <li><code>client_model.py</code>: Defines the structure of the client model.</li>
+                    <li><code>service_model.py</code>: Defines the structure of the service model.</li>
+                </ul>
+            </li>
+            <li><strong>database/</strong>
+                <ul>
+                    <li><code>create_tables.sql</code>: SQL script for creating tables in the database.</li>
+                    <li><code>sample_data.sql</code>: Example data script to populate the tables.</li>
+                </ul>
+            </li>
+            <li><strong>scripts/</strong>
+                <ul>
+                    <li><code>populate_database.py</code>: Python script to populate the database with sample data.</li>
+                </ul>
+            </li>
+            <li><strong>app/</strong>
+                <ul>
+                    <li><code>main.py</code>: Main application code.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    <section>
+        <h2>Configuration</h2>
+        <ol>
+            <li><strong>Database Configuration:</strong>
+                <ul>
+                    <li>Run the <code>create_tables.sql</code> script to create tables in your database.</li>
+                    <li>Optional: Use the <code>sample_data.sql</code> script to add example data.</li>
+                </ul>
+            </li>
+            <li><strong>Virtual Environment Setup (Optional):</strong>
+                <pre>
+                    virtualenv venv
+                    source venv/bin/activate  # on Linux/macOS
+                    # or
+                    .\venv\Scripts\activate  # on Windows
+                </pre>
+            </li>
+            <li><strong>Install Dependencies:</strong>
+                <pre>
+                    pip install -r requirements.txt
+                </pre>
+            </li>
+            <li><strong>Run the Application:</strong>
+                <pre>
+                    python app/main.py
+                </pre>
+            </li>
+        </ol>
+    </section>
 
-### Premium Partners
+    <section>
+        <h2>Usage</h2>
+        <p>This project provides a basic structure for managing clients and services. Feel free to extend and adapt it to your specific needs.</p>
+    </section>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    <section>
+        <h2>Testing with Postman</h2>
+        <p>The API endpoints can be tested using Postman. Import the provided Postman collection file <code>project.postman_collection.json</code> to explore and test the available endpoints.</p>
+    </section>
 
-## Contributing
+    <section>
+        <h2>Contributions</h2>
+        <p>Contributions are welcome. If you find any issues or have improvements, feel free to open an issue or submit a pull request.</p>
+    </section>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    <section>
+        <h2>License</h2>
+        <p>This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for more details.</p>
+    </section>
 
-## Code of Conduct
+</body>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+</html>
