@@ -12,7 +12,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $service = Service::all();
+
+        return response()->json($service);
     }
 
     /**
@@ -28,7 +30,12 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service = Service::create($request->all());
+        $data = [
+            'message' => 'Service has been created succesfully',
+            'service' => $service
+        ];
+        return response()->json($data);
     }
 
     /**
@@ -36,7 +43,14 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        $service = Service::find($service);
+        
+        if (!$service) {
+            return response()->json([
+                'messasge' => 'There is no service'
+            ]);
+        }
+        return response()->json($service);
     }
 
     /**
@@ -44,7 +58,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+
     }
 
     /**
@@ -52,7 +66,13 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $service->update($request->all());
+        $data = [
+            'message' => 'Service has been updated succesfully',
+            'service' => $service
+        ];
+
+        return response()->json($data);
     }
 
     /**
@@ -60,6 +80,25 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        $data = [
+            'message' => 'Service has been deleted succesfully',
+            'service' => $service
+        ];
+
+        return response()->json($data);
+    }
+
+    public function clients(Request $request)
+    {
+        $service = Service::find($request->service_id);
+        $clients = $service->client;
+
+        $data =[
+            'message' => 'Clients fetched succesfully',
+            'data' => $clients
+        ];
+
+        return response()->json($data);
     }
 }

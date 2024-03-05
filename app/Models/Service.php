@@ -9,8 +9,10 @@ class Service extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function client()
     {
-        return $this->belongsToMany(Client::class);
+        return $this->belongsToMany(Client::class, 'clients_services');
     }
 }

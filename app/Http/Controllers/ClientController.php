@@ -13,8 +13,20 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::all();
+        $array = [];
 
-        return response()->json($clients);
+        foreach ($clients as $client) {
+            $array = [
+                'id' => $client->id,
+                'name' => $client->name,
+                'email' => $client->email,
+                'phone' => $client->phone,
+                'address' => $client->address,
+                'services' => $client->services,
+            ];    
+        }
+
+        return response()->json($array);
     }
 
     /**
@@ -43,7 +55,20 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        return response()->json($client);
+        // $client = Client::find($client);
+        
+        // if (!$client) {
+        //     return response()->json([
+        //         'messasge' => 'There is no client'
+        //     ]);
+        // }
+        $data = [
+            'message' => 'Client details',
+            'client' => $client,
+            'services' => $client->services
+        ];
+
+        return response()->json($data);
     }
 
     /**
@@ -64,6 +89,7 @@ class ClientController extends Controller
             'message' => 'Client has been updated succesfully',
             'client' => $client
         ];
+
         return response()->json($data);
     }
 
@@ -76,6 +102,30 @@ class ClientController extends Controller
         $data = [
             'message' => 'Client has been deleted succesfully',
             'client' => $client
+        ];
+
+        return response()->json($data);
+    }
+
+    public function attach(Request $request)
+    {
+        $client = Client::find($request->client_id);
+        $client->services()->attach($request->service_id);
+        $data = [
+            'message' => 'Servicio agregado correctamente',
+            'data' => $client
+        ];
+
+        return response()->json($data);
+    }
+
+    public function detach(Request $request)
+    {
+        $client = Client::find($request->client_id);
+        $client->services()->detach($request->service_id);
+        $data = [
+            'message' => 'Servicio eliminado correctamente',
+            'data' => $client
         ];
 
         return response()->json($data);
